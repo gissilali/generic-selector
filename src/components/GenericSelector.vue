@@ -2,7 +2,7 @@
     <div class="flex justify-center items-center w-full h-screen">
         <div class="w-3/12">
             <label id="listbox-label" class="block text-sm font-medium text-gray-700"> Assigned to </label>
-            <div class="mt-1 relative">
+            <div ref="menuRef" class="mt-1 relative">
                 <button @focus="showDropdown = true" type="button"
                     class="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
@@ -50,13 +50,14 @@
 
 <script setup lang="ts">
 import { ref, type Ref, onMounted, onUnmounted } from 'vue';
-
+const menuRef: Ref = ref(null);
 onMounted(() => {
-    document.addEventListener('click', (e: MouseEvent) => {
-        console.log(e.target);
-        // if (e.target?.id !== 'listbox-label' && e.target?.id !== 'listbox-option-0') {
-        //     // showDropdown.value = false;
-        // }
+    document.addEventListener('click', (event: MouseEvent) => {
+        if (menuRef.value == event.target || event.composedPath().includes(menuRef.value)) {
+            return;
+        }
+
+        showDropdown.value = false;
     });
 })
 
@@ -106,7 +107,7 @@ const showDropdown = ref(false);
 
 function handleLanguageSelection(id: string) {
     selectedLanguage.value = programmingLanguages.find(lang => lang.id === id);
-    showDropdown.value = false;
+    // showDropdown.value = false;
 }
 </script>
 
