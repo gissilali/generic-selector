@@ -107,7 +107,7 @@ const showDropdown = ref(false);
 
 function handleLanguageSelection(id: string) {
     selectedLanguage.value = programmingLanguages.find(lang => lang.id === id);
-    // showDropdown.value = false;
+    showDropdown.value = false;
 }
 </script>
 
