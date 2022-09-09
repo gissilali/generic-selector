@@ -1,17 +1,20 @@
 <template >
-    <ViewlessSelector v-model="language" :keyz="'id'" :options="programmingLanguages" v-slot="{
+    <ViewlessSelector :value="language" :keyz="'id'" :options="programmingLanguages" v-slot="{
         selectedOption,
         menuRef,
         showDropdown,
         options,
         handleOptionSelection
     }">
-        <div class="flex justify-center space-x-10 items-center">
+        <div class=" flex justify-center h-full space-x-10 items-center">
             <ul>
-                <li class="py-2 px-2 hover:bg-slate-200 mt-2  rounded-lg max-w-xs cursor-pointer"
-                    @click="handleOptionSelection(language.id)" v-for="(language, index) in options" :key="index">
-                    <label :for="language.id">
-                        <input type="radio" name="languages" :id="language"> {{ language.name }}
+                <li class="" @click="handleOptionSelection(language.id)" v-for="(language, index) in options"
+                    :key="index">
+                    <label class="py-2 px-2 block hover:bg-slate-200 mt-2  rounded-lg max-w-xs cursor-pointer"
+                        :for="language.id">
+                        <input v-model="selectedLanguage" type="radio" name="languages" :id="language.id"> {{
+                        language.name
+                        }}
                     </label>
                 </li>
             </ul>
@@ -25,7 +28,7 @@
 <script setup>
 import ViewlessSelector from '../ViewlessSelector.vue'
 import { ref } from 'vue'
-const language = ref()
+const selectedLanguage = ref()
 
 const programmingLanguages = [
     {

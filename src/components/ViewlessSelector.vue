@@ -11,7 +11,8 @@ export default {
         keyz: {
             required: true,
             type: String
-        }
+        },
+        value: null
     },
     setup(props, { slots }) {
         const menuRef = ref(null);
