@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center items-center w-full h-screen">
-        <div class="w-3/12">
+        <div class="w-full">
             <label id="listbox-label" class="block text-sm font-medium text-gray-700"> Assigned to </label>
             <div ref="menuRef" class="mt-1 relative">
                 <button @focus="showDropdown = true" type="button"
@@ -112,4 +112,5 @@ function handleLanguageSelection(id: string) {
 </script>
 
 <style scoped>
+
 </style>
